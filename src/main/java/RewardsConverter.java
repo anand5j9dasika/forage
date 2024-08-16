@@ -1,23 +1,3 @@
-//import java.util.Scanner;
-//
-//public class RewardsConverter {
-//    public static void main(String[] args) {
-//        var scanner = new Scanner(System.in);
-//        System.out.println("Welcome to the Credit Card Rewards Converter!");
-//        System.out.println("Please enter a cash value to convert to airline miles: ");
-//        var input_value = scanner.nextLine();
-//        double cashValue;
-//        try {
-//            cashValue = Double.parseDouble(input_value);
-//        } catch (NumberFormatException exception) {
-//            System.out.println("Could not parse input value as a double, exiting");
-//            return;
-//        }
-//        System.out.println("converting $" + input_value + " to miles");
-//        var rewardsValue = new RewardValue(cashValue);
-//        System.out.println("$" + input_value + " is worth " + rewardsValue.getMilesValue() + " miles");
-//    }
-//}
 import java.util.Scanner;
 
 public class RewardsConverter {
@@ -40,7 +20,7 @@ public class RewardsConverter {
 
         // Example of converting miles to cash
         System.out.println("Converting miles to cash value:");
-        var milesRewardValue = new RewardValue(rewardsValue.getMilesValue(), true);
+        var milesRewardValue = new RewardValue(rewardsValue.getMilesValue());
         System.out.println(rewardsValue.getMilesValue() + " miles is worth $" + milesRewardValue.getCashValue());
     }
 }
@@ -57,11 +37,9 @@ class RewardValue {
     }
 
     // Constructor that accepts a miles value
-    public RewardValue(double milesValue, boolean isMiles) {
-        if (isMiles) {
-            this.milesValue = milesValue;
-            this.cashValue = milesValue * MILES_TO_CASH_CONVERSION_RATE;
-        }
+    public RewardValue(int milesValue) {
+        this.milesValue = milesValue;
+        this.cashValue = milesValue * MILES_TO_CASH_CONVERSION_RATE;
     }
 
     // Method to get the cash value
